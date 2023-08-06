@@ -1,0 +1,42 @@
+entity alu is
+    port (
+        data_in: in std_logic_vector(15 downto 0);
+        acc_in: in std_logic_vector(15 downto 0);
+        opcode: in std_logic_vector(3 downto 0);
+        acc_out: out std_logic_vector(15 downto 0)
+    );
+end alu;
+
+architecture alu_arch of alu is
+begin
+    process (data_in, acc_in, opcode)
+        variable temp: std_logic_vector(15 downto 0);
+    begin
+        -- işlem koduna bağlı olarak farklı işlemler yap
+        case opcode is
+            when "0000" => -- No operation
+                temp := acc_in;
+            when "0001" => -- Add
+                temp := std_logic_vector(unsigned(data_in) + unsigned(acc_in));
+            when "0010" => -- Subtract
+                temp := std_logic_vector(unsigned(acc_in) - unsigned(data_in));
+            when "0011" => -- And
+                temp := data_in and acc_in;
+            when "0100" => -- Or
+                temp := data_in or acc_in;
+            when "0101" => -- Xor
+                temp := data_in xor acc_in;
+            when "0110" => -- Left shift
+                temp := std_logic_vector(shift_left(unsigned(acc_in), 1));
+            when "0111" => -- Right shift
+                temp := std_logic_vector(shift_right(unsigned(acc_in), 1));
+            when "1000" => -- Logical Not
+                temp := not acc_in;
+            when "1001" => -- One's Complement
+                temp := std_logic_vector(not unsigned(acc_in));
+            when others =>
+                temp := acc_in; -- No operation
+        end case;
+        acc_out <= temp;
+    end process;
+end alu_arch;

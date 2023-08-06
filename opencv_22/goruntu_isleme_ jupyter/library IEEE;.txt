@@ -1,0 +1,74 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity ALU is
+  Port ( DR : in  STD_LOGIC_VECTOR (7 downto 0);
+         AC : in  STD_LOGIC_VECTOR (7 downto 0);
+         INPR : in  STD_LOGIC_VECTOR (7 downto 0);
+         s2 : in  STD_LOGIC;
+         s1 : in  STD_LOGIC;
+         s0 : in  STD_LOGIC;
+         carryin : in  STD_LOGIC;
+         s5 : in STD_LOGIC;
+         s4 : in STD_LOGIC;
+         s3 : in STD_LOGIC;
+         AC_out : out  STD_LOGIC_VECTOR (7 downto 0));
+end ALU;
+
+architecture Behavioral of ALU is
+begin
+  process(DR, AC, INPR, s2, s1, s0, carryin, s5, s4, s3)
+  begin
+    if s2 = '0' and s1 = '0' and s0 = '0' and carryin = '0' then
+      AC_out <= DR + AC;
+    elsif s2 = '0' and s1 = '0' and s0 = '0' and carryin = '1' then
+      AC_out <= DR + AC + '1';
+    elsif s2 = '0' and s1 = '0' and s0 = '1' and carryin = '0' then
+      AC_out <= DR + (not AC);
+    elsif s2 = '0' and s1 = '0' and s0 = '1' and carryin = '1' then
+      AC_out <= DR + (not AC) + '1';
+    elsif s2 = '0' and s1 = '1' and s0 = '0' and carryin = '0' then
+      AC_out <= DR;
+    elsif s2 = '0' and s1 = '1' and s0 = '0' and carryin = '1' then
+      AC_out <= DR + '1';
+    elsif s2 = '0' and s1 = '1' and s0 = '1' and carryin = '0' then
+      AC_out <= AC;
+    elsif s2 = '0' and s1 = '1' and s0 = '1' and carryin = '1' then
+      AC_out <= AC + '1';
+    elsif s2 = '1' and s1 = '0' and s0 = '0' and carryin = '0' then
+      AC_out <= DR - '1';
+    elsif s2 = '1' and s1 = '0' and s0 = '0' and carryin = '1' then
+      AC_out <= DR;
+    elsif s2 = '1' and s1 = '0' and s0 = '1' and carryin = '0' then
+      AC_out <= AC - '1';
+    elsif s2 = '1' and s1 = '0' and s0 = '1' and carryin = '1' then
+      AC_out <= AC;
+    elsif s2 = '1' and s1 = '1' and s0 = '0' and carryin = '0' then
+      AC_out <= DR - '1';
+    elsif s2 = '1' and s1 = '1' and s0 = '0' and carryin = '1' then
+      AC_out <= DR;
+    elsif s2 = '1' and s1 = '1' and s0 = '1' and carryin = '0' then
+      AC_out <= INPR;
+    elsif s2 = '1' and s1 = '1' and s0 = '1' and carryin = '1' then
+      AC_out <= INPR + '1';
+    elsif s5 = '0' and s4 = '0' and s3 = '0' then
+      AC_out <= AC and DR;
+    elsif s5 = '0' and s4 = '0' and s3 = '1' then
+      AC_out <= AC or DR;
+    elsif s5 = '0' and s4 = '1' and s3 = '0' then
+      AC_out <= AC xor DR;
+    elsif s5 = '0' and s4 = '1' and s3 = '1' then
+      AC_out <= not DR;
+    elsif s5 = '1' and s4 = '0' and s3 = '0' then
+      AC_out <= not AC;
+    elsif s5 = '1' and s4 = '0' and s3 = '1' then
+      AC_out <= std_logic_vector(shift_left(unsigned(AC), 1)); -- Assuming AC's MSB is a don't care
+    elsif s5 = '1' and s4 = '1' and s3 = '0' then
+      AC_out <= std_logic_vector(shift_right(unsigned(AC), 1)); -- Assuming AC's LSB is a don't care
+    else
+      AC_out <= (others => '0');
+    end if;
+  end process;
+end Behavioral;
