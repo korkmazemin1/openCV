@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5181cf8-dd57-495c-b851-b1be1aaa9546" name="Changes" comment="" />
+    <list default="true" id="d5181cf8-dd57-495c-b851-b1be1aaa9546" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/openCV.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/openCV.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyimagesearch/lessons/step2/simple_example.py/deneme.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyimagesearch/lessons/step4/match_histogram/match_histograms.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyimagesearch/lessons/step4/match_histogram/match_histograms.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +28,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RunManager">
@@ -58,6 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1694081159958</updated>
       <workItem from="1694081161555" duration="41000" />
+      <workItem from="1694275850332" duration="103000" />
     </task>
     <servers />
   </component>

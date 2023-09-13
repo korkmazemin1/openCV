@@ -12,7 +12,7 @@ args = vars(ap.parse_args())
 
 #^^^komut satırı işlemleri^^^
 
-image=cv2.imread(args["image"])# yolu verilmiş görüntü okundu
+image=cv2.imread(args["image"])# yolu verilmiş görüntü okundud
 ratio=image.shape[0]/500.0 # resmin oranı tespit edildi
 orig=image.copy()# resmin orijinal hali korundu
 image=imutils.resize(image,height=500)# yüksekliğe 500 değeri verildi
