@@ -1,3 +1,36 @@
+"""
+nesneleri tespit edip köşelerini sıraladığımız mini projenin algoritması
+
+order_points_old: sürdürülebilir olmayan ve karışık resimlerde x ve y toplamlarının farklı cisimlerde eşit
+olması durumunda hata verecek, sürdürülebilir olmayan bir fonksiyondur sadece görülmesi için yazılmıştır
+
+order_points:köşeleri sıralamak için optimize bir fonksiyondur.Kordinat sisteminde önce sağ-sol ile iki
+gruba ayırıp daha sonra y kordinatına göre sıralayan,kesin sonuç getiren bir fonksiyondur.
+bu fonksiyon imutils.perspective kütüphanesi import edilerek kullanılabilir ayrıca iç yapısı kodda mevcuttur
+
+ALGORİTMA
+1-resim okundu
+2-gray formata çevrildi
+3-Gaussian blur yöntemi ile blur uygulandı
+4-canny fonksiyonu ile kenarları saptandı
+5-dilate ve erode fonksiyonları ile kenarlar arasındaki boşluklar kapatıldı
+6-konturlar bulundu ve işlenebilir hale geldi
+7-konturlar sıralandı
+8-for döngüsü ile konturlar döndürüldü
+9-yeteri kadar büyük olan konturların etrafını saracak olan dörtgenlerin özellikleri belirlendi
+10-noktaları sıralamak için new parametresi o dan büyük olursa older points değil ise older points old  fonksiyonu kullanıldı
+11-konturların etrafını saran dörtgenler çizildi
+12-sırası ile kenarlar boyanması gereken noktalar ile boyandı
+
+
+
+
+
+"""
+
+
+
+
 from __future__ import print_function
 from scipy.spatial import distance as dist
 from imutils import perspective
