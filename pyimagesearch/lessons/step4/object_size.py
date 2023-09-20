@@ -79,7 +79,7 @@ for c in cnts :
         cv2.circle(orig,(int(x),int(y)),5,(0,0,255),-1)#konturları çevreleyen kutularınköşelerine ise kırmızı daireler eklendi
 
     (tl,tr,br,bl)=box
-    (tltrX,tltrY)=midpoint(tl,tr)# üstte sağ ve solun orta noktası
+    (tltrX, tltrY) = midpoint(tl,tr)# üstte sağ ve solun orta noktası
     (blbrX, blbrY) = midpoint(bl, br)#altta sağ be solun orta noktası
     (tlblX, tlblY) = midpoint(tl, bl)# solda üst ve altın orta noktası
     (trbrX, trbrY) = midpoint(tr, br)# sağda üst ve altın orta noktası
