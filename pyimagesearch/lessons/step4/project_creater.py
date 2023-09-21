@@ -1,5 +1,5 @@
 import os
-import argparse
+
 
 proje=input("lütfen oluşturmak istediğin projenin ismini giriniz: ")
 

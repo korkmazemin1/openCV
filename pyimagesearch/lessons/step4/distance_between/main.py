@@ -43,8 +43,10 @@ import imutils
 import cv2
 from datetime import datetime
 now=datetime.now()
+
+
 now=now.strftime('%Y_%m_%d_%H_%S')
-print(now)
+
 def midpoint(ptA,ptB):
     return ((ptA[0]+ptB[0])*0.5,(ptA[1]+ptB[1])*0.5)# kordinat düzleminde 2 noktanın orta noktasını hesaplayan fonksiyon
 
@@ -115,6 +117,6 @@ for c in cnts :
             cv2.putText(orig, "{:.1f}in".format(D), (int(mX), int(mY - 10)),cv2.FONT_HERSHEY_SIMPLEX, 0.55, color, 2)
             
             cv2.imshow("Image", orig)
-            cv2.imwrite(f"images/output/output_{now}.jpg",orig)
-            cv2.waitKey(0)
             
+            cv2.waitKey(0)
+            cv2.imwrite(f"images/output/output_{now}.jpg",orig)
