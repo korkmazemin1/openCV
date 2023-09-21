@@ -1,3 +1,34 @@
+"""
+LAB renk kanallarını kullanarak renkleri transfer ettiğimiz bu projenin algoritması
+
+
+image_stats
+1-split yöntemi ile kanalları ayrıştır
+2-kanallarının standart sapmasını ve ortalamasını teker teker ata
+3-standart sapmaları ve ortalamaları sonuç olarak döndür
+
+color_transfer
+1-resimler LAB formatına çevir
+2-image_stats kullanarak ortalamaları ve standart sapmaları çıkar
+3-cv2 split fonksiyonu kanal değerlerini tek tek çıkarıp ve bunu (l,a,b) ye atadık
+4-kanal değerlerinde ortalamaları çıkar
+5-kanalları standart sapmaya göre ölçeklendir
+6-laba kaynak kanallarının ortlamasını ekledik
+7-0-255 in dışında kalan pikseller kırpıldı
+8- işlem gören LAB kanallarının merge fonksiyonu ile birleştir
+9-en son olarak birleşen kanalları BGR formata çevir
+10-sonuç olarak transform görselini döndür
+
+1-color_transfere yolları girilen görselleri aktar
+2-sonucu göster
+
+"""
+
+
+
+
+
+
 import numpy as np 
 import cv2
 import argparse
