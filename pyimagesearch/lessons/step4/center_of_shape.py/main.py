@@ -4,9 +4,9 @@
  2-gray formata çevir
  3-blur uygula
  4-threshold uygula
- 5-konturları sapta ve işlenebilir hale getir
- 6-for döngüsü ile moments fonksiyonu ile beraber merkezin kordinatlarını hesapla
- 7-konturları ve merkezi gösterecek çemberi çiz
+ 5-konturları sapta ve dizi hale getir
+ 6-for döngüsü içinde moments fonksiyonu ile beraber merkezin kordinatlarını hesapla
+ 7-konturların etrafını kutu ile  ve merkezi gösterecek çemberleri çiz
 
 
 
