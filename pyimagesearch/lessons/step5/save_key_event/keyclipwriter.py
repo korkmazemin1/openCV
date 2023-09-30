@@ -24,7 +24,7 @@ class KeyClipWriter:
 
         def start(self,outputPath,fourcc,fps):
              self.recording =True # kayıt işleminin devam ettiğini belirtir
-             self.writer = cv2.VideoWriter(outputPath,fourcc,fps,(self.frames[0].shape[1],self.frames[0].shape[0]),True)# videoyu kaydetmek için parametreler girildi
+             self.writer = cv2.VideoWriter(outputPath,fourcc,fps,(600,600),True)# videoyu kaydetmek için parametreler girildi
              self.Q =Queue() # kuyruğu başlattık daha sonra tüm kareler arabelleğe atıp oradan kuyruğa ekleyeceğiz
              for i in range(len(self.frames),0,-1):# kareleri sondan başa doğru döndüren for döngüsü
                   self.Q.put(self.frames[i-1])# kareleri kuyruğa ekledik
@@ -54,7 +54,7 @@ class KeyClipWriter:
                  self.writer.write(frame)
 
         def finish(self):
-             self.recording =False# kaydır durdur
+             self.recording =False# kaydı durdur
              self.thread.join()# iş parçacığı ana dosya ile birleşir
              self.flush()
              self.writer.release()# write komutu biter
