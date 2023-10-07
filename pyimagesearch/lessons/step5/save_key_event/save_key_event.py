@@ -14,7 +14,7 @@ ap.add_argument("-p", "--picamera", type=int, default=-1,
 	help="whether or not the Raspberry Pi camera should be used")
 ap.add_argument("-f", "--fps", type=int, default=20,
 	help="FPS of output video")
-ap.add_argument("-c", "--codec", type=str, default="MJPG",
+ap.add_argument("-c", "--codec", type=str, default="DivX",
 	help="codec of output video")
 ap.add_argument("-b", "--buffer-size", type=int, default=32,
 	help="buffer size of video clip writer")
@@ -23,10 +23,11 @@ args = vars(ap.parse_args())
 
 print("[BİLGİLENDİRME] Kamereya erişiliyor...")
 vs = VideoStream(usePiCamera=args["picamera"] > 0).start()# kamera seçimi
+
 time.sleep(2.0)
 
-whiteLower = (78, 154, 124)# tespit  edeceğimiz nesnenin hsv sınırları
-whiteUpper = (138, 255, 255)
+whiteLower = (110,50,50)# tespit  edeceğimiz nesnenin hsv sınırları
+whiteUpper = (130,255,255)
 
 kcw = KeyClipWriter(bufSize=args["buffer_size"])# keyclip wirter başlatıldı
 consecFrames = 0# eylem içermeyen kareler
@@ -69,8 +70,8 @@ while True:
 
             if not kcw.recording:# eğer kaydedilmeye başlanmadı ise kaydet
                 timestamp=datetime.datetime.now()
-                p="images\\output\\{}_{}.avi".format(args["output"],timestamp.strftime("%Y%m%d_%H%M%S"))#kaydedeceğimiz videonun kayıt yolu
-                kcw.start(p, cv2.VideoWriter_fourcc(*"MJPG"),args["fps"])# video yazma
+                p="images\\output\\{}_{}.mp4".format(args["output"],timestamp.strftime("%Y%m%d_%H%M%S"))#kaydedeceğimiz videonun kayıt yolu
+                kcw.start(p, cv2.VideoWriter_fourcc(*"mp4v"),args["fps"])# video yazma
 
     if updateConsecFrames:
         consecFrames+= 1 # eğer herhangi bir hareket yoksa hareketsiz kareleri sayan sayacımız bir artar            

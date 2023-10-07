@@ -14,7 +14,6 @@ DIGITS_LOOKUP = {
 	(1, 1, 0, 1, 1, 1, 1): 6,
 	(1, 0, 1, 0, 0, 1, 0): 7,
 	(1, 1, 1, 1, 1, 1, 1): 8,
-    (0, 1, 0, 0, 0, 1, 0): 10,
 	(1, 1, 1, 1, 0, 1, 1): 9
 }  
 # 7 segmentli sayı göstergesinde 1 ler o segmentin açık olduğunu 0 ise kapalı olduğunu belirtir
@@ -60,8 +59,12 @@ cv2.imshow("wrap",warped)
 thresh = cv2.threshold(warped, 2, 255,cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU )[1]# kuşbakışı lcd görüntüsüne threshold uygulandı
 cv2.imshow("thresh",thresh)
 cv2.waitKey(0)
-#kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (1, 5))
-#thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)# morfoloji işlemleri uygulandı
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (1, 5))
+thresh=cv2.erode(thresh,kernel,dst=None)
+# thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)# morfoloji işlemleri uygulandı
+
+cv2.imshow("close", cv2.resize(thresh,(640,480)))
+"""
 
 cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)# sadece sayıların göründüğü threshold uygulanmış görselde konturlar bulunur
 cnts = imutils.grab_contours(cnts)# bu konturlar dizi haline getirilir
@@ -124,5 +127,7 @@ print(u"{}{}.{} \u00b0C".format(*digits))
 cv2.imshow("Input", image)
 output=cv2.resize(output,(600,600))
 cv2.imshow("Output", output)
+"""
 
 cv2.waitKey(0)
+cv2.destroyAllWindows()
