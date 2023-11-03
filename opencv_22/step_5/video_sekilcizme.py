@@ -9,7 +9,7 @@ height=cap.get(cv2.CAP_PROP_FRAME_HEIGHT)# videonun uzunluğu çekildi
 
 while True:
     ret,frame=cap.read()# frameler okunuyor
-    # ret bize framein okunup okunmadığını belirtir
+    # ret bize frame'in okunup okunmadığını belirtir
 
     x= int(width //2) # enin yarısı boyutunda integer değer
     y= int(height//2) # yüksekliğin yarısı boyutunda integer değer

@@ -3,11 +3,11 @@ import cv2
 import matplotlib.pyplot as plt
 
 
-corner_track_params=dict(maxCorners=10,qualityLevel=0.3,minDistance=7,blockSize=7)
+corner_track_params=dict(maxCorners=30,qualityLevel=0.3,minDistance=7,blockSize=7)
 
 lk_param=dict(winSize=(200,200),# winsize ile takip sisteminin hassasiyetini belirleriz
               maxLevel=2,#level değeri arttıkça çözünürlük değeri düşer
-              criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT,10,0.03))
+              criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT,10,0.03))########3
 
 
 cap=cv2.VideoCapture(0)# webcamden görüntü alınır
@@ -21,12 +21,12 @@ prev_gray=cv2.cvtColor(prev_frame,cv2.COLOR_BGR2GRAY)# Kare gray formata çekild
 prevPts=cv2.goodFeaturesToTrack(prev_gray,mask=None,**corner_track_params)# parametre çekerken ** kullanılmasının sebebi parametrenin dict formatında olmasıdır 
 
 
-mask = np.zeros_like(prev_frame)# bir önceki frami tuttuk# zeros like # çekilen fotonun arrayinin eşleniğinin sıfırını alır
+mask = np.zeros_like(prev_frame)# bir önceki frami tuttuk# zeros like  çekilen fotonun arrayinin eşleniğinin sıfırını alır
 
 while True:
     ret,frame=cap.read()# frameler okundu
     frame_gray =cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)# frame gray formata çevrilir
-
+    
     nextPts, status, err=cv2.calcOpticalFlowPyrLK(prev_gray,frame_gray,prevPts,None,**lk_param)# status 1 değerini alırsa problem yok demektir
 
     good_new=nextPts[status==1]
@@ -49,6 +49,7 @@ while True:
 
     img=cv2.add(frame,mask)
     cv2.imshow("frame",img)
+    cv2.imshow("roi_save",prev_frame)
     k=cv2.waitKey(30) & 0xFF
     if k==27:
             
