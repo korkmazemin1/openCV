@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pylab as plt
 
-shapes=cv2.imread("images\\input\\kontur.png")# resimler okundu
+shapes=cv2.imread("images\\input\\internal_external.jpg")# resimler okundu
 #shapes=cv2.bitwise_not(shapes)# kurs çıktısı ile yakın gitmek adına siyah beyaz değiştirildi
 shapes=cv2.cvtColor(shapes,cv2.COLOR_BGR2GRAY)
 shapes=cv2.blur(shapes,(11,11))
