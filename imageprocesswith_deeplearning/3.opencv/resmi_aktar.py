@@ -1,6 +1,6 @@
 import cv2
 import time
-image=cv2.imread("car.jpg")# resim içeri aktarıldı
+image=cv2.imread("data\\car.jpg")# resim içeri aktarıldı
 
 cv2.imshow("car",image)
 cv2.waitKey(0)
@@ -8,7 +8,7 @@ cv2.destroyAllWindows()
 
 
  
-cap=cv2.VideoCapture("video.mp4")# video içeri aktarıldı
+cap=cv2.VideoCapture("data\\video.mp4")# video içeri aktarıldı
 width=int(cap.get(3))
 height=int(cap.get(4))
 print("genislik:",cap.get(3))# 3. index genişlik 

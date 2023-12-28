@@ -1,6 +1,6 @@
 import cv2
 
-img= cv2.imread("car.jpg")# 0 yazarak gray formatta çektik
+img= cv2.imread("data\\car.jpg")# 0 yazarak gray formatta çektik
 
 print("resim boyutu: ",img.shape)# resmin boyutlarına bakıldı
 # gray formatta renk uzayı gözükmez
