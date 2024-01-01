@@ -37,11 +37,6 @@ for c in cnts:# bu döngüde önplan görüntüsündeki beyaz alanlar sayılarak
 
 print("saptanan para adedi:",len(white_dots))
 
-
-
-
-
-
 #deneme--------
 
 unknown=cv2.subtract(sure_bg,sure_fg)
