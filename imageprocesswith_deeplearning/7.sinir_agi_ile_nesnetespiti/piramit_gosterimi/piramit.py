@@ -3,21 +3,22 @@ import cv2
 import matplotlib.pyplot as plt
 
 def image_pyramid(image,scale=1.5,minSize=(10,10)):
+    if image is not None:
+        yield image
 
-    yield image
+        while True:
+            #yeniden boyutlandırma
+            w = int(image.shape[1]/scale)
+            
+            image= cv2.resize(image,dsize=(w,w))
+            # belirtilen minsize a gelene kadar bölünmeye devam eder
+            if image.shape[0]<minSize[1] or image.shape[1] < minSize[0]:
+                break
+            yield image    
+    else:
+        pass
 
-    while True:
-        #yeniden boyutlandırma
-        w = int(image.shape[1]/scale)
-        
-        image= cv2.resize(image,dsize=(w,w))
-        # belirtilen minsize a gelene kadar bölünmeye devam eder
-        if image.shape[0]<minSize[1] or image.shape[1] < minSize[0]:
-            break
-        yield image    
-
-
-image=cv2.imread("husky.webp")
+"""image=cv2.imread("husky.webp")
 
 im=image_pyramid(image)
 for  i,image in enumerate(im):
@@ -25,4 +26,4 @@ for  i,image in enumerate(im):
     print(i)
     if i==8:
         plt.imshow(image)
-        plt.waitforbuttonpress()
+        plt.waitforbuttonpress()"""

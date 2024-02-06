@@ -1,3 +1,4 @@
+# maksimum olmayan bastırma ile tespit edilen nesnelerden ihtimali yüksek olanlar seçilir
 import numpy as np 
 import cv2 
 
@@ -12,23 +13,25 @@ def non_maxi_suppression(boxes,probs=None,overlapThresh=0.3):
     if boxes.dtype.kind=="i":
         boxes=boxes.astype("float")
 
-    #  bütün kutuların köşeleri çekildi
-    x1=boxes[:,0]
+    #  bütün kutuların köşeleri  liste halinde çekildi
+    x1=boxes[:,0]# her bir kutunun 0.elemanı yani x1 i
     y1=boxes[:,1]
     x2=boxes[:,2]
     y2=boxes[:,3]
-
+ 
     #alan bulma
     alan=(x2-x1+1)*(y2+y1+1)
 
+    # y2 boş dönmemesi için atanan rastgele bir değer
     idxs=y2
 
     # olasılık değerleri 
     if probs is not None:
         idxs = probs 
+       
     #olasılık sıralama
     idxs= np.argsort(idxs)
-
+    
     #seçilen kutu 
     pick =[]
     while len(idxs)> 0:
@@ -51,8 +54,9 @@ def non_maxi_suppression(boxes,probs=None,overlapThresh=0.3):
         # overlap IoU(ıntersection over union)
 
         overlap=(w*h)/alan[idxs[:last]]
-
-        idxs=np.delete(idxs,np.concatenate(([last],np.where(overlap>overlapThresh))))
+        # belirli bir değerin altında kalan kutular silinir
+        
+        idxs=np.delete(idxs,np.concatenate(([last],np.where(overlap>overlapThresh)[0])))
     return boxes[pick].astype("int")
 
 
