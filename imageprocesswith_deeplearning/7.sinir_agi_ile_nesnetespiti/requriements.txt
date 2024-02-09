@@ -1,0 +1,4 @@
+pip install -U -q segmentation-models
+pip install -q tensorflow==2.1
+pip install -q keras==2.3.1
+pip install -q tensorflow-estimator==2.1.
