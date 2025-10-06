@@ -1,1 +1,1 @@
-# Bu repo opencv kurs kodlarımı barındırıyor
+# This repo includes my opencv course codes
